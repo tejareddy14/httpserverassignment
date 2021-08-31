@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonhttp-deployment 
+  labels:
+    app: pythonhttp 
+spec:
+  replicas: 2 
+  selector:
+    matchLabels:
+      app: pythonhttp 
+  template:
+    metadata:
+      labels:
+        app: pythonhttp 
+    spec:
+      containers:
+      - name: pythonhttp 
+        image: 281455864058.dkr.ecr.us-east-2.amazonaws.com/teja-assignment-ecr:http-python
+        stdin: true
+        tty: true 
+        ports:
+        - containerPort: 80
